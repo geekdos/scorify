@@ -1,4 +1,4 @@
-3\n
+4\n
 3 N 3\n
 Aty-hj89H-LLLL\n
 N89765-KKK-MMMM\n
@@ -11,3 +11,8 @@ Pqqq-12345-00000000000000000000000000000000000\n
 3 Hello 2\n
 HelloAAA-AAA-tyuuu\n
 HELLO-B11-yiyuiuyiu\n
+5 A 4\n
+Aty-hj89H-LLLL\n
+N89765-KKK-MMMM\n
+Nazzee-lm1-PPPPPPMPLKOPPL\n
+Aazzee-lm1ds-PPPPPPMPLKOPPL\n

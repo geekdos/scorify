@@ -11,16 +11,28 @@ function getTestCases($handle) : int
 
 $testCases = getTestCases($handle);
 
-
-if ($handle) {
+if ($handle && $testCases >= 1 && $testCases <= 50) {
     while (($line = fgets($handle)) !== false) {
         $result = getLine($line);
-        $TestCaseParams = parseCase($result);
-        $m = (int) $TestCaseParams[0]; $c = $TestCaseParams[1]; $n = (int) $TestCaseParams[2];
-        for ($j = 0; $j < $n; $j++){
-            dd($m);
-            dd($n);
-            dd($c);
+        if ($testCases != 0){
+            $testCasesParams = explode(' ', $result);
+            $m = $testCasesParams[0];$c = $testCasesParams[1];$n = $testCasesParams[2];
+        }
+        if ($m >= 3 && $m <= 10 && strlen($c) >= 1 && strlen($c) <= 5 && $n >= 1 && $n <= 100) {
+            $counter = 0;
+            for ($i = 0; $i < $n; $i++) {
+                $line = fgets($handle);
+                $case = explode('-', $line);
+                if (strlen($line) <= 80) {
+                    if (strlen($case[1]) == $m && strcmp($c, substr($case[0], 0, strlen($c))) == 0) {
+                        $counter++;
+                    }
+                }
+
+            }
+
+            printf("%d\n", $counter);
+            $testCases--;
         }
     }
 
@@ -28,7 +40,9 @@ if ($handle) {
 } else {
     printf("You have an error on your file");
 }
+/*
 
+*/
 function getLine($lineFile){
     $lines = explode('\n', $lineFile);
     return $lines[0];
