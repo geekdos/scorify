@@ -1,20 +1,23 @@
 <?php
-$file = fopen ("sdtin.txt", "r");
+//$handle = STDIN;
+define('STDIN', 'stdin.txt');
+$handle = fopen(STDIN, "r");
 
-for ($i = 0; $i < 3 ; $i++){
+if ($handle) {
+    while (($line = fgets($handle)) !== false) {
 
-    printf("%d\n",countWord(trim(fgets($file))));
+        // logic here
+        $result = str_replace('.', '', getLine($line));
+
+        printf("%s\n", $result);
+    }
+
+    fclose($handle);
+} else {
+    printf("You have an error on your file");
 }
 
-function countWord($phrase){
-
-    $lines = explode('\n',$phrase);
-
-    $line = implode("", $lines);
-
-    $number = str_word_count($line);
-
-    return $number;
-
+function getLine($lineFile){
+    $lines = explode('\n', $lineFile);
+    return $lines[0];
 }
-
