@@ -5,9 +5,7 @@ $handle = fopen(STDIN, "r");
 
 if ($handle) {
     while (($line = fgets($handle)) !== false) {
-
-        // logic here
-        $result = str_replace('.', '', getLine($line));
+        $result = getLine($line);
 
         printf("%s\n", $result);
     }
@@ -20,4 +18,9 @@ if ($handle) {
 function getLine($lineFile){
     $lines = explode('\n', $lineFile);
     return $lines[0];
+}
+
+function dd($var)
+{
+    echo var_dump($var);
 }
