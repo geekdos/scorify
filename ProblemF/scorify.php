@@ -6,9 +6,28 @@ $handle = fopen(STDIN, "r");
 if ($handle) {
     while (($line = fgets($handle)) !== false) {
         $result = getLine($line);
-        
+        $params = str_split($result);
+        $expression = null;
+        foreach ($params as $value){
+            if ($value != '~' && $value != '|' && $value != '&' && $value != '^'){
+                $expression += $value;
+            }else{
+                if ($value == '~')
+                    $expression += ' ! ';
+                if ($value == '^')
+                    $expression += ' XOR ';
+                if ($value == '|')
+                    $expression += ' || ';
+                if ($value == '&')
+                    $expression += ' && ';
+            }
+        }
 
-        printf("%s\n", $result);
+        if ($expression == 0)
+            printf("<>\n");
+        else
+            printf("=\n");
+        //break;
     }
 
     fclose($handle);
