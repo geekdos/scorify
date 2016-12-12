@@ -16,7 +16,7 @@ if ($handle && $testCases >= 1 && $testCases <= 50) {
         $result = getLine($line);
         if ($testCases != 0){
             $testCasesParams = explode(' ', $result);
-            $m = $testCasesParams[0];$c = $testCasesParams[1];$n = $testCasesParams[2];
+            list($m, $c, $n) = $testCasesParams;
         }
         if ($m >= 3 && $m <= 10 && strlen($c) >= 1 && strlen($c) <= 5 && $n >= 1 && $n <= 100) {
             $counter = 0;
@@ -55,5 +55,5 @@ function parseCase($firstLine){
 
 
 function dd($var){
-    echo "<pre>".var_dump($var)."</pre>";
+    echo var_dump($var);
 }
